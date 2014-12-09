@@ -11,7 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141208193422) do
+ActiveRecord::Schema.define(version: 20141209105301) do
+
+  create_table "requests", force: true do |t|
+    t.string   "title"
+    t.text     "details"
+    t.integer  "urgency"
+    t.integer  "relevance_period"
+    t.integer  "requestor_id"
+    t.integer  "assigned_to"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "complete",         default: false
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

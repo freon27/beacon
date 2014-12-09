@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  details: MyText
+  urgency: 1
+  relevance_period: 1
+  requestor_id: 1
+  assigned_to: 1
+
+two:
+  title: MyString
+  details: MyText
+  urgency: 1
+  relevance_period: 1
+  requestor_id: 1
+  assigned_to: 1

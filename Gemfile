@@ -38,11 +38,21 @@ gem 'devise'
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 gem 'therubyracer'  # If using Ruby
-gem 'jquery-rails'  # If using Bootstrap's JS plugins.
 gem 'less-rails-bootstrap'
 
+group :development do
+	  gem 'guard'
+	  gem 'guard-minitest',     '2.3.1'
+		gem 'terminal-notifier-guard'
+		gem 'terminal-notifier', '~> 1.6.2' 
+end
+
 group :test do
+	  gem 'rspec'
 	  gem 'minitest-reporters', '1.0.5'
     gem 'mini_backtrace',     '0.1.3'
 	  gem 'guard-minitest',     '2.3.1'
 end
+
+gem 'minitest-matchers', :group => 'test'
+gem 'valid_attribute', :group => 'test'
