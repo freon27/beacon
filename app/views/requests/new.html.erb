@@ -1,0 +1,24 @@
+
+<%= bootstrap_form_for(Request.new, :html => {:class => "col-xs-6"}) do |f| %>
+	<%= f.text_field :title %>
+	<%= f.text_area :details, :rows => 10 %>
+	<%= f.select :urgency, [
+		["Today", 1],
+		["Tomorrow", 2],
+		["This week", 3],
+		["Next week", 4],
+		["This month", 5],
+		["Someday", 6]
+	], {:selected => 3} %>
+	<%= f.select :relevance_period, [
+		["1 week", 1],
+		["2 weeks", 2],
+		["3 weeks", 3],
+		["More", 4]
+	], {:selected => 4} %>
+
+	<%= button_tag(type: 'submit', class: "btn btn-primary") do %>
+	<span class="glyphicon glyphicon-thumbs-up"></span> Submit
+	<% end %>
+<% end %>
+

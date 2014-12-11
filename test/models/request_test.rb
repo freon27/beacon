@@ -6,7 +6,7 @@ class RequestTest < ActiveSupport::TestCase
       @valid_data = {
         :title        => 'Test Title',
         :details      => 'Test Details',
-        :requestor_id => users(:one).id
+        :requestor_id => users(:requestor_one).id
       }
   end
   
@@ -30,6 +30,11 @@ class RequestTest < ActiveSupport::TestCase
   
   test "should save with valid data" do
     request = Request.new(@valid_data)
-    assert request.save, "Saved the request with valid data"
+    assert request.save, "Did not save the request with valid data"
+  end
+  
+  test "should default complete to false" do
+    request = Request.new(@valid_data)
+    assert_not request.complete, "Requests should initialise not complete"
   end
 end

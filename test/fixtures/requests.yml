@@ -1,17 +1,24 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  title: MyString
-  details: MyText
+  title: Request for something
+  details: I want a thing done
   urgency: 1
   relevance_period: 1
-  requestor_id: 1
-  assigned_to: 1
+  requestor: requestor_one
+  assignee: requestor_one
 
 two:
-  title: MyString
-  details: MyText
+  title: Request for something else 
+  details: I want a different thing done
   urgency: 1
   relevance_period: 1
-  requestor_id: 1
-  assigned_to: 1
+  requestor: requestor_one
+
+three:
+  title: Request for a thidrd
+  details: I am a big old complainer
+  urgency: 1
+  relevance_period: 1
+  requestor: requestor_one
+  complete: true

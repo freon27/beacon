@@ -1,0 +1,50 @@
+<div class="table-responsive">
+	<table class="table table-bordered">
+		<tr>
+			<th>Title</th>
+			<th>Status</th>
+			<th>Urgency</th>
+			<th>Requested date</th>
+			<th>Requested by</th>
+			<th>Handled by</th>
+			<th></th>
+
+
+	<% @requests.each do |request| %>
+
+		<%
+			class_name=""
+			row_class=""
+			if request.complete
+				row_class = "active"
+				class_name = "active"
+			elsif request.assignee
+				class_name = "success"
+			else 
+				class_name = "warning"
+			end
+		%>
+	
+		<tr class=" <%= row_class %>">
+			<td><%= link_to request.title, request_path(request) %></td>
+			<td><%= request.complete ? "Closed" : "Open" %></td>
+			<td><%= request.urgency %></td>
+			<td><%= request.created_at.strftime('%-d %B %Y') %></td>
+			<td><%= request.requestor.email  %></td>
+			<td class="<%= class_name %>"><%= request.assignee ? request.assignee.email : "Not assigned" %></td>
+			<% if request.assignee && request.assignee == current_user %>
+			<td><%= link_to 'Unassign', request_path(request, :request => { :assigned_to => nil } ), :method => :put %></td>
+			<% else %>
+			<td><%= link_to 'Assign to me', request_path(request, :request => { :assigned_to => current_user.id } ), :method => :put %></td>
+			<% end %>
+		</tr>
+	<% end %>
+	</table>
+</div>
+<div class="btn-group" role="group" aria-label="...">
+	<% if params[:show_complete] %>
+	<%= link_to raw("<span class=\"glyphicon glyphicon-remove-circle\"></span> Hide completed"), requests_path, :class => "btn btn-primary" %>
+	<% else %>
+	<%= link_to raw("<span class=\"glyphicon glyphicon-search\"></span> Show completed"), requests_path(:show_complete => true), :class => "btn btn-primary" %>
+	<% end %>
+</div>

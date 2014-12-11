@@ -39,6 +39,7 @@ gem 'devise'
 # gem 'debugger', group: [:development, :test]
 gem 'therubyracer'  # If using Ruby
 gem 'less-rails-bootstrap'
+gem 'bootstrap_form'
 
 group :development do
 	  gem 'guard'

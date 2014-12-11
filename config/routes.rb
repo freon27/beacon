@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  
+  authenticated :user do
+    root :to => 'requests#index', :as => :authenticated_root
+  end
+  root :to => redirect('/users/sign_in')
+  
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -54,4 +60,6 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+	#
+	resources :requests
 end

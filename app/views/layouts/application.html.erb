@@ -7,13 +7,33 @@
 		<%= csrf_meta_tags %>
 	</head>
 	<body>
-		<% if notice %>
-			<p class="alert alert-success"><%= notice %></p>
-		<% end %>
-		<% if alert %>
-			<p class="alert alert-danger"><%= alert %></p>
-		<% end %>
-		<%= yield %>
+		<div class="container-fluid">
+			<h1>
+				Beacon
+			</h1>
 
+			<% if signed_in? %>
+			<nav class="navbar navbar-default" role="navigation">
+				<ul class="nav navbar-nav">
+					<li><%= button_to 'New Request', new_request_path , :class => "btn btn-success navbar-btn", :method => 'get' %></li>
+					<li><%= link_to 'All Requests', requests_path %></li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<% if user_signed_in? %>
+					<li><%= link_to raw("<span class=\"glyphicon glyphicon-log-out\"></span> Logout"), destroy_user_session_path, :method => :delete %> </li>
+					<% end %>
+				</ul>
+			</nav>
+			<% end %>
+			
+			<% if notice %>
+				<p class="alert alert-success"><%= notice %></p>
+			<% end %>
+			<% if alert %>
+				<p class="alert alert-danger"><%= alert %></p>
+			<% end %>
+			<%= yield %>
+
+		</div>
 	</body>
 </html>

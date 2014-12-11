@@ -1,0 +1,18 @@
+
+<div class="row col-md-8">
+	<div class="panel panel-default">
+	  <div class="panel-heading">
+	    <h3 class="panel-title"><%= @request.title %></h3>
+	  </div>
+	  <div class="panel-body">
+	    <%= @request.details %>
+	  </div>
+	</div>
+</div>
+
+<div class="row col-md-8">
+	<div class="btn-group" role="group">
+		<%= link_to raw("<span class=\"glyphicon glyphicon-ok\"></span> Mark Completed"), request_path(@request, :request => { :complete => true }), :class => "btn btn-primary", :method => :put %> 
+		<%= link_to raw("<span class=\"glyphicon glyphicon-arrow-left\"></span> Back to index"), requests_path, :class => "btn btn-default" %>
+	</div>
+</div>
