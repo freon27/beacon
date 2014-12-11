@@ -4,7 +4,6 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.8'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 # Use Uglifier as compressor for JavaScript assets
@@ -42,6 +41,7 @@ gem 'less-rails-bootstrap'
 gem 'bootstrap_form'
 
 group :development do
+		gem 'sqlite3'
 	  gem 'guard'
 	  gem 'guard-minitest',     '2.3.1'
 		gem 'terminal-notifier-guard'
@@ -50,6 +50,7 @@ end
 
 group :test do
 	  gem 'rspec'
+		gem 'sqlite3'
 	  gem 'minitest-reporters', '1.0.5'
     gem 'mini_backtrace',     '0.1.3'
 	  gem 'guard-minitest',     '2.3.1'
