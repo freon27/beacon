@@ -33,7 +33,7 @@
 				<% for attachment in @request.attachments %>
 				<% if ! attachment.new_record? %>
 				<tr>
-					<td><%= link_to attachment.file.original_filename, attachment.file.url(:original, false) %></td>
+					<td><%= link_to attachment.file.original_filename, attachment.file.url %></td>
 					
 					<td><%= link_to "Remove", attachment, method: :delete %></td>
 				</tr>
