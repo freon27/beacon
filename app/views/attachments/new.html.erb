@@ -1,0 +1,6 @@
+<%= bootstrap_form_for([@request, @attachment], :html => {:class => "col-xs-6"}) do |f| %>
+	<%= f.file_field :file %>
+	<%= button_tag(type: 'submit', class: "btn btn-primary") do %>
+	<span class="glyphicon glyphicon-thumbs-up"></span> Upload
+	<% end %>
+<% end %>
