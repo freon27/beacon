@@ -1,3 +1,29 @@
 // Place all the styles related to the Requests controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+ul.documents li {
+	padding-left: 60px;
+	padding-bottom: 12px;
+}
+
+ul.documents li.pdf {
+    background:transparent image-url('Reader-48.gif') top left no-repeat;
+}
+
+ul.documents li.word {
+    background:transparent image-url('Word-48.gif') top left no-repeat;
+}
+
+ul.documents li.text {
+    background:transparent image-url('Reader-48.gif') top left no-repeat;
+}
+
+ul.documents li.mp3 {
+    background:transparent image-url('mp3-48.png') top left no-repeat;	
+}
+
+ul.documents li.excel {
+    background:transparent image-url('Excel-48.gif') top left no-repeat;	
+}

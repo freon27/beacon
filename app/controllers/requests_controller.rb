@@ -13,6 +13,7 @@ class RequestsController < ApplicationController
   
   def show
     @request = Request.find(params[:id])
+    @attachment = @request.attachments.build
   end
   
   def new   

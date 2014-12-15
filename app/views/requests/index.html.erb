@@ -24,11 +24,20 @@
 				class_name = "warning"
 			end
 		%>
+		
+		<%
+			urgency_class_name=""
+			if request.urgency == 1 
+				urgency_class_name = "danger"
+			elsif request.urgency == 2
+				class_name = "warning"
+			end
+		%>
 	
 		<tr class=" <%= row_class %>">
 			<td><%= link_to request.title, request_path(request) %></td>
 			<td><%= request.complete ? "Closed" : "Open" %></td>
-			<td><%= request.urgency %></td>
+			<td class="<%= urgency_class_name %>"><%= request.urgency %></td>
 			<td><%= request.created_at.strftime('%-d %B %Y') %></td>
 			<td><%= request.requestor.email  %></td>
 			<td class="<%= class_name %>"><%= request.assignee ? request.assignee.email : "Not assigned" %></td>

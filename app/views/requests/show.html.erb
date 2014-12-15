@@ -1,18 +1,58 @@
+<div class="row">
+	<div class="col-md-7">
+		<div class="panel panel-default">
+		  <div class="panel-heading">
+		    <h3 class="panel-title"><%= @request.title %></h3>
+		  </div>
+		  <div class="panel-body">
+		    <%= @request.details %>
+		  </div>
+		</div>
+		<div class="btn-group" role="group">
+			<% if current_user == @request.assignee %>
+			<%= link_to raw("<span class=\"glyphicon glyphicon-ok\"></span> Mark Completed"), request_path(@request, :request => { :complete => true }), :class => "btn btn-primary", :method => :put %> 
+			<% end %>
+			<% if current_user == @request.requestor %>
+			<%= link_to raw("<span class=\"glyphicon glyphicon-upload\"></span> Add Attachment"), new_request_attachment_path(@request), :class => "btn btn-primary" %>
+			<% end %>
+			<%= link_to raw("<span class=\"glyphicon glyphicon-arrow-left\"></span> Back to Index"), requests_path, :class => "btn btn-default" %>
+		</div>
+	</div>
+	
+	<div class="col-md-5">
 
-<div class="row col-md-8">
-	<div class="panel panel-default">
-	  <div class="panel-heading">
-	    <h3 class="panel-title"><%= @request.title %></h3>
-	  </div>
-	  <div class="panel-body">
-	    <%= @request.details %>
-	  </div>
+		<div class="panel panel-default">
+		  	<div class="panel-heading">
+				<h3 class="panel-title">Attachments</h3>
+		  	</div>
+			<table class="table">
+				<tr>
+					<th>File</th>
+					<th></th>
+				</tr>
+				<% for attachment in @request.attachments %>
+				<% if ! attachment.new_record? %>
+				<tr>
+					<td><%= link_to attachment.file.original_filename, attachment.file.url(:original, false) %></td>
+					
+					<td><%= link_to "Remove", attachment, method: :delete %></td>
+				</tr>
+				<% end %>
+			<% end %>
+			</table>
+		</div>
+		<div class="row">
+			
+			<%= bootstrap_form_for([@request, @attachment], :html => {:class => "col-xs-6"}) do |f| %>
+				<%= f.file_field :file, :label => "Add File" %>
+				<%= button_tag(type: 'submit', class: "btn btn-primary") do %>
+					<span class="glyphicon glyphicon-thumbs-up"></span> Upload
+				<% end %>
+			<% end %>
+		</div>
 	</div>
 </div>
 
 <div class="row col-md-8">
-	<div class="btn-group" role="group">
-		<%= link_to raw("<span class=\"glyphicon glyphicon-ok\"></span> Mark Completed"), request_path(@request, :request => { :complete => true }), :class => "btn btn-primary", :method => :put %> 
-		<%= link_to raw("<span class=\"glyphicon glyphicon-arrow-left\"></span> Back to index"), requests_path, :class => "btn btn-default" %>
-	</div>
+	
 </div>

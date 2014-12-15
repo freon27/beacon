@@ -61,5 +61,10 @@ Rails.application.routes.draw do
   #     resources :products
   #   end
 	#
-	resources :requests
+  resources :attachments, only: [:destroy]
+
+	resources :requests do
+    resources :attachments, only: [:new, :create]
+  end
+
 end

@@ -5,6 +5,6 @@ class Request < ActiveRecord::Base
   validates_presence_of :title, :details, :requestor_id
   belongs_to :requestor, class_name: "User"
   belongs_to :assignee, class_name: "User", foreign_key: "assigned_to"
-  
-  default_scope { order(:created_at => :desc) }
+  has_many :attachments, dependent: :destroy
+  default_scope { order(:urgency => :asc, :created_at => :asc) }
 end
