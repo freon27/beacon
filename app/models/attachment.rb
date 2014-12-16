@@ -1,6 +1,6 @@
 class Attachment < ActiveRecord::Base
   belongs_to :request
-  has_attached_file :file, :styles => { :original => "250x250>" }, :url => ":s3_eu_url"
+  has_attached_file :file, :styles => { :original => "250x250>" }, :url => :s3_eu_url
   validates_attachment_file_name :file, :matches => [/png\Z/, /jpe?g\Z/, /gif\Z/, /doc\Z/, /pdf\Z/]
   before_post_process :allow_only_images
   
